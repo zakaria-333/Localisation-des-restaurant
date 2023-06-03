@@ -5,7 +5,7 @@ import Footer from './Footer';
 const Contact = () => {
   return (
     <div className="py-5">
-      <Container style={{fontSize:18}}>
+      <Container>
         <Row>
           <Col md={6}>
             <h2>Nous Contacter</h2>

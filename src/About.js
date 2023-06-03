@@ -6,7 +6,7 @@ import Footer from './Footer';
 const About = () => {
   return (
     <div className="py-5">
-      <Container style={{fontSize:18}}>
+      <Container>
         <Row>
           <Col>
             <h2>À propos de nous</h2>
