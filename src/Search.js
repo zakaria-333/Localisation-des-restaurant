@@ -7,6 +7,9 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
 import Toast from 'react-bootstrap/Toast';
+import Footer from './Footer.js'
+import { Container } from 'react-bootstrap';
+
 
 
 
@@ -39,7 +42,7 @@ function Search() {
   const [showA, setShowA] = useState(false);
   const toggleShowA = () => setShowA(!showA);
   const close = () => setShowA(false);
-  
+
 
 
 
@@ -71,7 +74,7 @@ function Search() {
   function handleZoneChange(e) {
     try {
       setCurrentZoneId(e.target.value);
-      
+
     }
     catch (error) {
       console.log(error.message)
@@ -80,8 +83,8 @@ function Search() {
 
   function handleSpecialiteChange(e) {
     setCurrentSpecialiteId(e.target.value);
-   
-    
+
+
   }
 
 
@@ -89,11 +92,11 @@ function Search() {
   function handleClick() {
     setRestaurant("");
     setShowA(false);
-    
+
 
     var div = document.getElementById("monDiv");
     div.style.display = 'none';
-    if (!currentSpecialiteId || !currentZoneId || currentSpecialiteId=='default' ||currentZoneId=='default') {
+    if (!currentSpecialiteId || !currentZoneId || currentSpecialiteId == 'default' || currentZoneId == 'default') {
 
       div.style.display = "block";
       return;
@@ -118,8 +121,8 @@ function Search() {
 
   return (
 
-    <div>
-      <div className="container mb-6 overflow">
+    <Container>
+      <div className="container mb-6 overflow" id='scrollable-content'>
         <div className="row">
           <div className="col-md-4">
             <select className="form-select mb-2" onChange={handleChange}>
@@ -170,7 +173,7 @@ function Search() {
 
           <div className='col-md-6 mb-4'>
             <Carousel variant={variant}>
-              {Array.isArray(restaurant) ? (
+              {Array.isArray(restaurant) && restaurant.length > 0 ? (
                 restaurant.map((element, index) => (
                   <Carousel.Item key={index}>
                     <Card>
@@ -178,8 +181,9 @@ function Search() {
                       <Card.Body>
                         <Card.Title>{element.name}</Card.Title>
                         <Card.Text>
-                          Some quick example text to build on the card title and make up the
-                          bulk of the card's content.
+                          Le nom : {element.name}<br/>
+                          L'adresse : {element.adresse}
+
                         </Card.Text>
                         <div className="d-flex justify-content-center mb-5">
                           <button
@@ -260,7 +264,7 @@ function Search() {
 
 
           <div className='col-md-5'>
-            <Toast show={showA} onClose={close} bg={'info'} style={{width: 500}}>
+            <Toast show={showA} onClose={close} bg={'info'} style={{ width: 500 }}>
               <Toast.Header>
                 <img
                   src="holder.js/20x20?text=%20"
@@ -297,7 +301,7 @@ function Search() {
 
         </div>
       </div>
-    </div>
+    </Container>
   )
 }
 

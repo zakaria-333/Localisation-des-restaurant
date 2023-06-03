@@ -1,11 +1,12 @@
 import React from 'react';
 import './css/pages.css';
 import { Container, Row, Col } from 'react-bootstrap';
+import Footer from './Footer';
 
 const About = () => {
   return (
-    <div className="py-5 bg-light">
-      <Container>
+    <div className="py-5">
+      <Container style={{fontSize:18}}>
         <Row>
           <Col>
             <h2>À propos de nous</h2>
@@ -16,6 +17,7 @@ const About = () => {
           </Col>
         </Row>
       </Container>
+      <Footer/>
     </div>
   );
 };
